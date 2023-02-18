@@ -1,0 +1,5 @@
+*.OutJob
+*.PrjPcb
+*.PrjPcbStructure
+*.PcbDoc
+*.SchDoc
