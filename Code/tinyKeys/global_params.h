@@ -7,7 +7,6 @@
  * 
  * @file       global_params.h
  * @author     juskim (GitHub: jus-kim, YouTube: @juskim)
- * @date       Jan 14, 2023
  * @brief      Header file with global parameters.
  */
 
@@ -15,13 +14,9 @@
 #define __GLOBAL_PARAMS_H
 
 
-#include "keys_profile_40percent.h"
-#include "keys_profile_testpad.h"
+#define T_TASK_LOOP_MS              10  // Super loop period in [ms]
 
-
-#define T_TASK_LOOP_MS              1   // Super loop period in [ms]
-
-#define FLAG_KEYBOARD_SELECTION     KEY_PRO_ID_TESTPAD
+#define FLAG_KEYBOARD_SELECTION     KEY_PRO_ID_40_PERCENT
 
 // NOTE: Add new flag ID for any additional keyboard layout profiles
 #define KEY_PRO_ID_TESTPAD          0 

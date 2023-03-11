@@ -7,7 +7,6 @@
  * 
  * @file       keys_lib.h
  * @author     juskim (GitHub: jus-kim, YouTube: @juskim)
- * @date       Jan 14, 2023
  * @brief      Generic keyboard library.
  */
 
@@ -17,6 +16,11 @@
 #include <Arduino.h>
 #include <Keyboard.h>
 #include "global_params.h"
+#if FLAG_KEYBOARD_SELECTION == KEY_PRO_ID_TESTPAD
+#include "keys_profile_testpad.h"
+#elif FLAG_KEYBOARD_SELECTION == KEY_PRO_ID_40_PERCENT
+#include "keys_profile_40percent.h"
+#endif
 
 
 /** Enum for GPIO states. */
@@ -35,9 +39,9 @@ class keys_lib
   private:
     uint16_t t_period_ms;
     uint8_t key_matrix[KEY_ROW_TOTAL][KEY_COL_TOTAL];
-    uint16_t key_states[KEY_COL_TOTAL][KEY_ROW_TOTAL] = { 0 };
+    uint16_t key_states[KEY_ROW_TOTAL][KEY_COL_TOTAL] = { 0 };
     // NOTE: Add new keyboard layout profile below to macro
-#if FLAG_KEYBOARD_SELECTION == KEY_SEL_TESTPAD
+#if FLAG_KEYBOARD_SELECTION == KEY_PRO_ID_TESTPAD
     keys_profile_testpad m_keys_profile;
 #elif FLAG_KEYBOARD_SELECTION == KEY_PRO_ID_40_PERCENT
     keys_profile_40percent m_keys_profile;

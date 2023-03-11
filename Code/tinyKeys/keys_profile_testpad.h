@@ -7,8 +7,7 @@
  * 
  * @file       keys_profile_testpad.h
  * @author     juskim (GitHub: jus-kim, YouTube: @juskim)
- * @date       Jan 14, 2023
- * @brief      Generic keyboard library.
+ * @brief      Keyboard profile for testpad.
  */
 
 // NOTE: Check out below link for the list of all special key character values

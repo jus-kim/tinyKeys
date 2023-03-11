@@ -7,7 +7,6 @@
  * 
  * @file       tinyKeys.ino
  * @author     juskim (GitHub: jus-kim, YouTube: @juskim)
- * @date       Jan 14, 2023
  * @brief      Main file for tinyKeys.
  */
 
