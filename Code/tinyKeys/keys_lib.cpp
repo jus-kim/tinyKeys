@@ -32,7 +32,6 @@ void keys_lib::init(uint16_t _t_period_ms)
   t_period_ms = _t_period_ms;
 }
 
-
 void keys_lib::set_gpio(uint8_t gpio_pin, uint8_t state)
 {
   switch (state)
@@ -53,12 +52,10 @@ void keys_lib::set_gpio(uint8_t gpio_pin, uint8_t state)
   }
 }
 
-
 bool keys_lib::get_gpio_input(uint8_t gpio_pin)
 {
   return digitalRead(gpio_pin);
 }
-
 
 void keys_lib::set_key_matrix_default(void)
 {
@@ -68,26 +65,33 @@ void keys_lib::set_key_matrix_default(void)
       key_matrix[i_row][i_col] = m_keys_profile.key_matrix[i_row][i_col];
     }
   }
+  for (uint8_t i_col = 0; i_col < m_keys_profile.total_col; i_col++)
+  {
+    for (uint8_t i_row = 0; i_row < m_keys_profile.total_row; i_row++) {
+      key_matrix_fn_pressed[i_row][i_col] = m_keys_profile.key_matrix_fn_pressed[i_row][i_col];
+    }
+  }
 }
-
 
 uint8_t keys_lib::get_gpio_col(uint8_t col)
 {
   return m_keys_profile.gpio_col[col];  
 }
 
-
 uint8_t keys_lib::get_gpio_row(uint8_t row)
 {
   return m_keys_profile.gpio_row[row];
 }
-
 
 uint8_t keys_lib::get_key_char(uint8_t row, uint8_t col)
 {
   return key_matrix[row][col];
 }
 
+uint8_t keys_lib::get_key_char_fn(uint8_t row, uint8_t col)
+{
+  return key_matrix_fn_pressed[row][col];
+}
 
 void keys_lib::scan_matrix(void)
 {
@@ -113,7 +117,6 @@ void keys_lib::scan_matrix(void)
   }
 }
 
-
 void keys_lib::output_matrix(void)
 {
   for (uint8_t i_col = 0; i_col < KEY_COL_TOTAL; i_col++)
@@ -121,19 +124,45 @@ void keys_lib::output_matrix(void)
     for (uint8_t i_row = 0; i_row < KEY_ROW_TOTAL; i_row++)
     {
       if (key_states[i_row][i_col] >= t_period_ms) {
-        Keyboard.press(get_key_char(i_row, i_col));
+        if (get_key_char(i_row, i_col) == KEY_FN) {
+          key_fn_pressed = true;
+        }
+        else
+        {
+          if (key_fn_pressed)
+          {
+            if (get_key_char_fn(i_row, i_col) != KEY_NULL) {
+              Keyboard.press(get_key_char_fn(i_row, i_col));
+            }
+          }
+          else {
+            Keyboard.press(get_key_char(i_row, i_col));
+          }
+        }
       }
       else {
-        Keyboard.release(get_key_char(i_row, i_col));
+        if (get_key_char(i_row, i_col) == KEY_FN) {
+          key_fn_pressed = false;
+        }
+        else
+        {
+          if (key_fn_pressed)
+          {
+            if (get_key_char_fn(i_row, i_col) != KEY_NULL) {
+              Keyboard.release(get_key_char_fn(i_row, i_col));
+            }
+          }
+          else {
+            Keyboard.release(get_key_char(i_row, i_col));
+          }
+        }
       }
     }
   }
 }
-
 
 int8_t keys_lib::run_tasks(void)
 {
   scan_matrix();
   output_matrix();
 }
-

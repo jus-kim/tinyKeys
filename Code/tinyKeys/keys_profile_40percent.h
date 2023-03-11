@@ -57,7 +57,12 @@ class keys_profile_40percent
       { { KEY_ESC, 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p' }, 
         { KEY_TAB, 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';' },
         { KEY_LEFT_SHIFT, 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/' }, 
-        { KEY_LEFT_CTRL, KEY_LEFT_GUI, KEY_LEFT_ALT, ' ', ' ', KEY_RIGHT_ALT, KEY_RIGHT_CTRL, KEY_RIGHT_SHIFT, KEY_RETURN, KEY_BACKSPACE } };
+        { KEY_LEFT_CTRL, KEY_LEFT_GUI, KEY_LEFT_ALT, ' ', KEY_FN, KEY_RIGHT_ALT, KEY_RIGHT_CTRL, KEY_RIGHT_SHIFT, KEY_RETURN, KEY_BACKSPACE } };
+    uint8_t key_matrix_fn_pressed[KEY_ROW_TOTAL][KEY_COL_TOTAL] =
+      { { KEY_NULL, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' }, 
+        { KEY_NULL, '`', '-', '=', '[', ']', '\'', '\\', KEY_NULL, KEY_NULL, KEY_NULL },
+        { KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL }, 
+        { KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL, KEY_NULL } };
 };
 
 

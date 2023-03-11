@@ -43,9 +43,13 @@ class keys_profile_testpad
     const uint8_t gpio_row[KEY_ROW_TOTAL] =
       { KEY_ROW_PIN_0, KEY_ROW_PIN_1, KEY_ROW_PIN_2 };
     uint8_t key_matrix[KEY_ROW_TOTAL][KEY_COL_TOTAL] =
-      { {'7', '8', '9'}, 
-        {'4', '5', '6'},
-        {'1', '2', '3'} };
+      { { '7', '8', '9' }, 
+        { '4', '5', '6' },
+        { '1', '2', '3' } };
+    uint8_t key_matrix_fn_pressed[KEY_ROW_TOTAL][KEY_COL_TOTAL] =
+      { { KEY_NULL, KEY_NULL, KEY_NULL }, 
+        { KEY_NULL, KEY_NULL, KEY_NULL },
+        { KEY_NULL, KEY_NULL, KEY_NULL } };
 };
 
 

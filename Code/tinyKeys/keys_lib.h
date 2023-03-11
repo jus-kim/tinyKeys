@@ -16,11 +16,6 @@
 #include <Arduino.h>
 #include <Keyboard.h>
 #include "global_params.h"
-#if FLAG_KEYBOARD_SELECTION == KEY_PRO_ID_TESTPAD
-#include "keys_profile_testpad.h"
-#elif FLAG_KEYBOARD_SELECTION == KEY_PRO_ID_40_PERCENT
-#include "keys_profile_40percent.h"
-#endif
 
 
 /** Enum for GPIO states. */
@@ -39,7 +34,9 @@ class keys_lib
   private:
     uint16_t t_period_ms;
     uint8_t key_matrix[KEY_ROW_TOTAL][KEY_COL_TOTAL];
+    uint8_t key_matrix_fn_pressed[KEY_ROW_TOTAL][KEY_COL_TOTAL];
     uint16_t key_states[KEY_ROW_TOTAL][KEY_COL_TOTAL] = { 0 };
+    bool key_fn_pressed = false;
     // NOTE: Add new keyboard layout profile below to macro
 #if FLAG_KEYBOARD_SELECTION == KEY_PRO_ID_TESTPAD
     keys_profile_testpad m_keys_profile;
@@ -54,6 +51,7 @@ class keys_lib
     uint8_t get_gpio_col(uint8_t col);
     uint8_t get_gpio_row(uint8_t row);
     uint8_t get_key_char(uint8_t row, uint8_t col);
+    uint8_t get_key_char_fn(uint8_t row, uint8_t col);
     void scan_matrix(void);
     void output_matrix(void);
 };

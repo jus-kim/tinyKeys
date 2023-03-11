@@ -33,7 +33,6 @@ void setup()
   TIMSK0 |= _BV(OCIE0A);
 }
 
-
 void loop()
 {
   // Complete all keyboard related periodic tasks
@@ -43,7 +42,6 @@ void loop()
   while(t_counter_ms < T_TASK_LOOP_MS);
   t_counter_ms = 0;
 }
-
 
 SIGNAL(TIMER0_COMPA_vect)
 {

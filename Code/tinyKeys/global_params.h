@@ -15,12 +15,20 @@
 
 
 #define T_TASK_LOOP_MS              10  // Super loop period in [ms]
+#define KEY_FN                      0x01
+#define KEY_NULL                    0x00
 
 #define FLAG_KEYBOARD_SELECTION     KEY_PRO_ID_40_PERCENT
 
 // NOTE: Add new flag ID for any additional keyboard layout profiles
 #define KEY_PRO_ID_TESTPAD          0 
 #define KEY_PRO_ID_40_PERCENT       1
+
+#if FLAG_KEYBOARD_SELECTION == KEY_PRO_ID_TESTPAD
+#include "keys_profile_testpad.h"
+#elif FLAG_KEYBOARD_SELECTION == KEY_PRO_ID_40_PERCENT
+#include "keys_profile_40percent.h"
+#endif
 
 
 #endif  // __GLOBAL_PARAMS_H
