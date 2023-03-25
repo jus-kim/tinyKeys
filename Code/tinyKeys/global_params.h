@@ -15,8 +15,8 @@
 
 
 #define T_TASK_LOOP_MS              10  // Super loop period in [ms]
-#define KEY_FN                      0x01
 #define KEY_NULL                    0x00
+#define KEY_FN                      0x01
 
 #define FLAG_KEYBOARD_SELECTION     KEY_PRO_ID_40_PERCENT
 

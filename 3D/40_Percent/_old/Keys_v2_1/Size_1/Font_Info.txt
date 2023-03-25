@@ -1,0 +1,2 @@
+Letter font: Arial, bold, 4.0 mm
+Small letter font: Arial, bold, 1.7 mm
